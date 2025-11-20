@@ -8,10 +8,42 @@ To perform and verify multirate DSP without function using SCILAB.
 PC installed with SCILAB. 
 
 ## PROGRAM : 
-
-//  SPEECH RECOGNITION USING SCILAB
-
+````
+clear;
+clc;
+close;
+n = 0:%pi/50:2*%pi;
+x = sin(%pi*n); //original signal
+M=input('Enter the downsampling factor');
+L=input('Enter the upsampling factor');
+//Down Sampling
+downsampling_x = x(1:M:length(x));
+disp(x,'Input signal x(n)=');
+disp(downsampling_x,'Downsampled Signal');
+figure(1);
+subplot(2,1,1)
+plot2d3(1:length(x),x);
+xtitle('original singal')
+subplot(2,1,2)
+plot2d3(1:length(downsampling_x),downsampling_x);
+xtitle('Downsampled Signal by a factor of M');
+//Upsampling
+upsampling_x=[];
+for i=1:length(x)
+upsampling_x(1,L*i)=x(i);
+end
+disp(x,'Input signal x(n)=');
+disp(upsampling_x,'Upsampled Signal');
+figure(2);
+subplot(2,1,1);
+plot2d3(x);
+title('original signal');
+subplot(2,1,2);
+plot2d3(upsampling_x);
+title('Upsampled Signal by a factor of L');
+````
 ## OUTPUT: 
+![WhatsApp Image 2025-11-21 at 00 05 43_7b07716d](https://github.com/user-attachments/assets/59c07f52-5a77-4c9c-8300-a83a6e26dce9)
 
 
 ## RESULT: 
